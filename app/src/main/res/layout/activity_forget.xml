@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg_mountain"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp">
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button"
+            android:text="返回"
+            android:layout_margin="5dp"
+            android:textSize="20sp">
+        </Button>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="忘记密码"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:layout_centerInParent="true">
+
+        </TextView>
+
+    </RelativeLayout>
+    <EditText
+        android:id="@+id/et_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_bg"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:hint="请输入账号"/>
+
+    <EditText
+        android:id="@+id/et_password_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/edit_bg"
+        android:hint="请输入手机号"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button"
+        android:textSize="24sp"
+        android:layout_marginVertical="20sp"
+        android:text="查询密码"/>
+
+</LinearLayout>
