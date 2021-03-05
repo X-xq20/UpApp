@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_label"
         android:supportsRtl="true"
         android:theme="@style/Theme.DayDayUp">
-        <activity android:name=".ForgetActivity"></activity>
+        <activity android:name=".AddActivity"></activity>
+        <activity android:name=".ForgetActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".WelcomeActivity">

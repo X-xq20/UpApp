@@ -6,6 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class user implements  Serializable{
+
+
+    private Integer id;
     private String account;
     private String password;
     private String phone;
@@ -18,6 +21,13 @@ public class user implements  Serializable{
         this.account = account;
         this.password = password;
         this.phone = phone;
+    }
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAccount() {
@@ -47,7 +57,8 @@ public class user implements  Serializable{
     @Override
     public String toString() {
         return "user{" +
-                "account='" + account + '\'' +
+                "id=" + id +
+                ", account='" + account + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';

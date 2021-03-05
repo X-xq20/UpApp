@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import com.example.daydayup.dao.userDao;
 import com.example.daydayup.model.user;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private  Button btn_back,btn_save;
     private EditText et_account,et_password,et_password_confirm,et_phone;
+    private userDao userDao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
          et_password = findViewById(R.id.et_password);
          et_password_confirm = findViewById(R.id.et_password_confirm);
          et_phone= findViewById(R.id.et_phone);
+         userDao = new userDao(RegisterActivity.this);
     }
     public void onClick(View v){
         int id = v.getId();
@@ -48,46 +50,35 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 //判断内容是否合法
                 if(account.trim().length() == 0)
                 {
-                    Toast.makeText(RegisterActivity.this,"账号不能为空",0).show();
+                    Toast.makeText(RegisterActivity.this,"账号不能为空",Toast.LENGTH_SHORT).show();
                     return;//结束方法
                 }
                 if(password.trim().length() == 0)
                 {
-                    Toast.makeText(RegisterActivity.this,"密码不能为空",0).show();
+                    Toast.makeText(RegisterActivity.this,"密码不能为空",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if(!password.equals(password_confirm))
                 {
-                    Toast.makeText(RegisterActivity.this,"两次输入密码不一致",0).show();
+                    Toast.makeText(RegisterActivity.this,"两次输入密码不一致",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(phone.trim().length() == 0)
                 {
-                    Toast.makeText(RegisterActivity.this,"手机号不能为空",0).show();
+                    Toast.makeText(RegisterActivity.this,"手机号不能为空",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 //判断账号和手机号是否重复
-                if(isExistByAccountAndPhone(account,phone)){
-                    Toast.makeText(RegisterActivity.this,"账号或密码已经存在，请重新输入",0).show();
+                if(userDao.isExistByAccountAndPhone(account,phone)){
+                    Toast.makeText(RegisterActivity.this,"账号或手机号已存在，请重新输入",Toast.LENGTH_SHORT).show();
                 }
                 user bean = new user(account,password,phone);   //将数据打包到user对象中
-                LoginActivity.list.add(bean);   //添加到集合中
+                userDao.insert(bean);//添加到集合中
                 finish();   //返回登录界面
 
                 break;
         }
     }
-//根据账号和手机号查询是否已注册
-    public  boolean isExistByAccountAndPhone(String account,String phone)
-    {
-        for(user item:LoginActivity.list)
-        {
-            if(item.equals(account)||item.equals(account))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
+
 }
